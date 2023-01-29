@@ -2,10 +2,31 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var timeDisplayEl = $('#time-display');
+var saveButtonEl = $('#save-btn');
+var storageInput = document.querySelector('.storage');
+var text = document.querySelector('.text');
+var storedInput = localStorage.getItem('textinput')
+
+if (storageInput)[
+    text.textContent = storedInput
+]
+
+// Adding eventListener for storageInput
+
+// storageInput.addEventListener('input', letter => {
+//     text.textContent = letter.target.value
+// })
+
+// Saving to local storage
+
+// var saveToLocalStorage = () => {
+//     localStorage.setItem('textinput', text.textContent)
+// }
+
+//saveButtonEl.addEventListener('click', saveToLocalStorage)
 
 
-
-
+localStorage.setItem('colorSetting', '#a4509b');
 
 
 function displayTime() {
@@ -13,34 +34,14 @@ function displayTime() {
     timeDisplayEl.text(rightNow);
 }
 
-// function readProjectsFromStorage() {
-//     var projects = localStorage.getItem('projects');
-//     if (projects) {
-//       projects = JSON.parse(projects);
-//     } else {
-//       projects = [];
-//     }
-//     return projects;
-//   }
 
-function readCalendarsFromStorage() {
-    var calendars = localStorage.getItem('calendars');
-    if (calendars) {
-        calendars = JSON.parse(calendars);
-    } else {
-        calendars = [];
-    }
-    return calendars;
-}
 
-// function saveProjectsToStorage(projects) {
-//     localStorage.setItem('projects', JSON.stringify(projects));
-// }
 
-function saveCalendarsToStorage(calendars) {
-    localStorage.setItem('calendars', JSON.stringify(calendars));
-}
 
+
+
+
+// (---------------------------------------------)
 
 
 
@@ -79,3 +80,6 @@ $(function () {
 
   displayTime();
   setInterval(displayTime, 1000);
+  
+
+  localStorage.getItem('colorSetting', '#a4509b');
