@@ -7,26 +7,28 @@ var storageInput = document.querySelector('.storage');
 var text = document.querySelector('.text');
 var storedInput = localStorage.getItem('textinput')
 
-if (storageInput)[
+if (storageInput) {
     text.textContent = storedInput
-]
-
+}
 // Adding eventListener for storageInput
 
-// storageInput.addEventListener('input', letter => {
-//     text.textContent = letter.target.value
-// })
+storageInput.addEventListener('input', letter => {
+    text.textContent = letter.target.value
+});
 
 // Saving to local storage
 
-// var saveToLocalStorage = () => {
-//     localStorage.setItem('textinput', text.textContent)
-// }
+var saveToLocalStorage = () => {
+    localStorage.setItem('textinput', text.textContent)
+}
 
-//saveButtonEl.addEventListener('click', saveToLocalStorage)
+saveButtonEl.on('click', saveToLocalStorage)
 
 
-localStorage.setItem('colorSetting', '#a4509b');
+
+
+
+// localStorage.setItem('colorSetting', '#a4509b');
 
 
 function displayTime() {
@@ -82,4 +84,4 @@ $(function () {
   setInterval(displayTime, 1000);
   
 
-  localStorage.getItem('colorSetting', '#a4509b');
+//   localStorage.getItem('colorSetting', '#a4509b');
