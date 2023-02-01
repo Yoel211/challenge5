@@ -6,30 +6,25 @@ var saveButtonEl = $('#save-btn');
 var storageInput = document.querySelector('.storage');
 var text = document.querySelector('.text');
 var storedInput = localStorage.getItem('textinput')
+var currentHour = dayjs().hour();
+
+
+
+
+// Saving to local storage
+var saveToLocalStorage = () => {
+    localStorage.setItem('textinput', text.text)
+}
 
 if (storageInput) {
-    text.textContent = storedInput
+    text.text = storedInput
 }
+
 // Adding eventListener for storageInput
 
 storageInput.addEventListener('input', letter => {
-    text.textContent = letter.target.value
+    text.text = letter.target.value
 });
-
-// Saving to local storage
-
-var saveToLocalStorage = () => {
-    localStorage.setItem('textinput', text.textContent)
-}
-
-saveButtonEl.on('click', saveToLocalStorage)
-
-
-
-
-
-// localStorage.setItem('colorSetting', '#a4509b');
-
 
 function displayTime() {
     var rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
@@ -43,8 +38,26 @@ function displayTime() {
 
 
 
+
 // (---------------------------------------------)
 
+// set a for loop to chang colors each hour.
+
+
+for (let index = 9; index < 18 ; index++) {
+    const hour = $('#hour-' + index)
+
+    if ( index < currentHour) {
+        hour.addClass('past')
+    }
+    if ( index == currentHour) {
+        hour.addClass('present') 
+    }
+    if (index > currentHour) {
+        hour.addClass('future')
+    }
+    
+}
 
 
 
@@ -79,9 +92,7 @@ $(function () {
   });
 
 
-
   displayTime();
   setInterval(displayTime, 1000);
-  
-
-//   localStorage.getItem('colorSetting', '#a4509b');
+  saveButtonEl.on('click', saveToLocalStorage)
+  dayjs().hour(12);
